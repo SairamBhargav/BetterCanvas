@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Plus Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6750A4 0%, #625B71 100%);
+            color: white;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 32px;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1C1B1F;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #49454F;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #E7E0EC;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #6750A4;
+            box-shadow: 0 0 0 3px rgba(103, 80, 164, 0.1);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #49454F;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .button {
+            padding: 12px 24px;
+            border-radius: 20px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .button-primary {
+            background: #6750A4;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #5a4590;
+            box-shadow: 0 2px 8px rgba(103, 80, 164, 0.3);
+        }
+
+        .button-secondary {
+            background: transparent;
+            color: #6750A4;
+            border: 1px solid #6750A4;
+        }
+
+        .button-secondary:hover {
+            background: rgba(103, 80, 164, 0.05);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        .status-message.success {
+            background: rgba(102, 187, 106, 0.1);
+            color: #2e7d32;
+            border-left: 4px solid #66bb6a;
+            display: block;
+        }
+
+        .status-message.error {
+            background: rgba(239, 83, 80, 0.1);
+            color: #c62828;
+            border-left: 4px solid #ef5350;
+            display: block;
+        }
+
+        .status-message.info {
+            background: rgba(103, 80, 164, 0.1);
+            color: #6750A4;
+            border-left: 4px solid #6750A4;
+            display: block;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #49454F;
+            margin-top: 4px;
+        }
+
+        .help-text a {
+            color: #6750A4;
+            text-decoration: none;
+        }
+
+        .help-text a:hover {
+            text-decoration: underline;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Canvas Plus Settings</h1>
+            <p>Configure your Canvas Plus experience</p>
+        </div>
+
+        <div class="content">
+            <div id="status-message" class="status-message"></div>
+
+            <div class="section">
+                <div class="section-title">🔐 Authentication</div>
+
+                <div class="form-group">
+                    <label for="api-token">Canvas API Token (Optional)</label>
+                    <div class="input-group">
+                        <input type="password" id="api-token" placeholder="Enter your Canvas API token">
+                        <button class="toggle-password" id="toggle-password" type="button">👁️</button>
+                    </div>
+                    <div class="help-text">
+                        Get your token from Canvas: Account → Settings → New Access Token
+                        <br>
+                        <a href="https://community.canvaslms.com/t5/Student-Guide/How-do-I-manage-API-access-tokens-as-a-student/ta-p/273"
+                            target="_blank">Learn more</a>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="button button-primary" id="test-connection">Test Connection</button>
+                    <button class="button button-secondary" id="clear-token">Clear Token</button>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">⚙️ Preferences</div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="overlay-enabled" checked>
+                        <label for="overlay-enabled" style="margin: 0;">Enable Canvas Plus overlay</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline-range">Timeline Range</label>
+                    <select id="timeline-range">
+                        <option value="7">7 days</option>
+                        <option value="14" selected>14 days</option>
+                        <option value="30">30 days</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">💾 Data Management</div>
+
+                <div class="button-group">
+                    <button class="button button-secondary" id="clear-cache">Clear Cache</button>
+                    <button class="button button-secondary" id="refresh-data">Refresh Data</button>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="button button-primary" id="save-settings">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="settings.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can Help</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --md-sys-color-primary: #6750A4;
+      --md-sys-color-on-primary: #FFFFFF;
+      --md-sys-color-surface: #FFFBFE;
+      --md-sys-color-on-surface: #1C1B1F;
+      --md-sys-color-surface-variant: #E7E0EC;
+      --md-sys-color-on-surface-variant: #49454F;
+      --md-sys-color-primary-container: #EADDFF;
+      --md-sys-color-on-primary-container: #21005D;
+      --md-sys-color-error: #ef5350;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      min-width: 350px;
+      background-color: var(--md-sys-color-surface);
+      font-family: 'Roboto', sans-serif;
+      color: var(--md-sys-color-on-surface);
+    }
+
+    .header {
+      background: linear-gradient(135deg, var(--md-sys-color-primary) 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .settings-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 20px;
+      transition: background 0.2s;
+    }
+
+    .settings-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    .section {
+      margin-bottom: 12px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: var(--md-sys-color-surface-variant);
+      transition: all 0.2s ease;
+    }
+
+    .section-header {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+
+    .section-header:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .section-content {
+      padding: 0 16px;
+      max-height: 0;
+      overflow: hidden;
+      background: white;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+    }
+
+    .section-content.active {
+      padding: 12px 16px;
+      max-height: 500px;
+    }
+
+    .expand-button {
+      font-size: 18px;
+      color: var(--md-sys-color-on-surface-variant);
+      transition: transform 0.3s;
+    }
+
+    .section-content.active+.expand-button {
+      transform: rotate(180deg);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .course-pill {
+      background-color: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .due-soon {
+      color: var(--md-sys-color-error);
+      font-weight: 500;
+    }
+
+    /* Section icons */
+    .section-title-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <h1>📚 Canvas Plus</h1>
+    <button class="settings-btn" id="open-settings" title="Settings">⚙️</button>
+  </div>
+
+  <div class="container">
+    <div id="announcements" class="section">
+      <div class="section-header">
+        <div class="section-title-wrapper">
+          <span>📢</span>
+          <span>Recent Announcements</span>
+        </div>
+        <span class="expand-button">▼</span>
+      </div>
+      <div class="section-content">
+        <ul id="announcements-list"></ul>
+      </div>
+    </div>
+
+    <div id="calendar" class="section">
+      <div class="section-header">
+        <div class="section-title-wrapper">
+          <span>🎓</span>
+          <span>My Courses</span>
+        </div>
+        <span class="expand-button">▼</span>
+      </div>
+      <div class="section-content">
+        <ul id="courses-list"></ul>
+      </div>
+    </div>
+
+    <div id="assignments" class="section">
+      <div class="section-header">
+        <div class="section-title-wrapper">
+          <span>⚠️</span>
+          <span>Priority Assignments</span>
+        </div>
+        <span class="expand-button">▼</span>
+      </div>
+      <div class="section-content">
+        <ul id="assignments-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>
