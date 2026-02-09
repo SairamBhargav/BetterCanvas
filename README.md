@@ -1,31 +1,21 @@
-# Canvas Plus 📚
+# Canvas Plus 
 
-A powerful Chrome extension that enhances Canvas LMS with intelligent priority filtering, interactive timelines, and Material Design 3 aesthetics.
-
+A  Chrome extension that enhances Canvas LMS with priority filtering, timelines, and in built UI. 
 ## Features
 
-### 🚨 Most Urgent Widget
+### Most Urgent Widget
 
 - Highlights assignments due within **48 hours**
-- **Traffic light color coding**: Red (urgent) → Yellow (soon) → Green (upcoming)
 - Card-based layout with course information
 - Click to open assignments directly
 
-### 📅 Interactive Timeline
+### Interactive Timeline
 
 - Horizontal scrollable timeline from soonest to furthest
 - Proportional positioning based on due dates
 - Color-coded priority indicators
-- Smooth animations and hover effects
 
-### 🎨 Material Design 3 UI
-
-- Floating dashboard overlay
-- Shadow DOM for complete CSS isolation
-- No conflicts with Canvas's native styling
-- Minimize/maximize functionality
-
-### 🔐 Hybrid Authentication
+### Hybrid Authentication
 
 - Automatic session-based authentication
 - Optional API token fallback
@@ -60,32 +50,16 @@ For enhanced reliability, you can add a Canvas API token:
 
 Access settings via: **Right-click extension icon → Options**
 
-- 🔐 API token management
-- ⚙️ Enable/disable overlay
-- 📅 Timeline range (7/14/30 days)
-- 💾 Clear cache and refresh data
+- API token management
+- Enable/disable overlay
+- Timeline range (7/14/30 days)
+- Clear cache and refresh data
 
 ## Architecture
-
-### Modular Service Layer
 
 - **CanvasAPIService** - API interaction with hybrid auth
 - **StorageService** - Cache management with TTL
 - **StateManager** - Centralized state with observer pattern
-
-### UI Components
-
-- **OverlayContainer** - Main floating overlay with Shadow DOM
-- **UrgentWidget** - 48-hour assignment filter
-- **TimelineView** - Horizontal timeline visualization
-
-## Technical Highlights
-
-- ✅ **Shadow DOM** for CSS isolation
-- ✅ **Hash-based caching** with automatic invalidation
-- ✅ **Observer pattern** for reactive UI updates
-- ✅ **Rate limiting** to protect Canvas API
-- ✅ **Material Design 3** design system
 
 ## Development
 
@@ -110,14 +84,7 @@ canvas-helper/
 
 ## Browser Support
 
-- ✅ Chrome (Manifest V3)
-- ✅ Edge (Chromium-based)
-- ❌ Firefox (requires Manifest V2 port)
+- ✅ Chrome 
+- ✅ Edge 
+- ❌ Firefox 
 
-## Contributing
-
-Contributions welcome! This project was built with:
-
-- Vanilla JavaScript (no frameworks)
-- Material Design 3 principles
-- Clean, modular architecture
